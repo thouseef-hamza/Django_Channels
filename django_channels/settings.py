@@ -72,8 +72,6 @@ TEMPLATES = [
 
 ASGI_APPLICATION = 'django_channels.asgi.application'
 
-
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

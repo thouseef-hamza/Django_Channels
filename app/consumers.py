@@ -6,14 +6,20 @@ class MySyncConsumer(SyncConsumer):
     def websocket_connect(self,event):
         print('Websocket Connected............................................',event)
         self.send({
-            'type':'websocket.accept'
-        })
+            'type':'websocket.accept',
+        }) 
         
     
     # This Handler is called when data recieved from client 
     def websocket_receive(self,event):
         print('Message Recieved...............................................',event)
         print('Message is ',event['text'])
+        self.send({
+            'type':'websocket.send',
+            'text':'Message Send to Client'
+        })
+        
+        
         
     # This handler is called when either connection to  the client is lost,
     # either from the client closing the connection,
@@ -38,6 +44,10 @@ class MyAsyncConsumer(AsyncConsumer):
     async def websocket_receive(self,event):
         print('Message Recieved...............................................',event)
         print('Message is ',event['text'])
+        await self.send({
+            'type':'websocket.send',
+            'text':'Message Send to Client'
+        })
         
     # This handler is called when either connection to  the client is lost,
     # either from the client closing the connection,
