@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channels</title>
+</head>
+<body>
+    <h1>Count Page</h1>
+    <script>
+        var ws = new WebSocket('ws://127.0.0.1:8000/ws/sc/')
+        /* ws.onopen = function(){
+            console.log('Websocket Connection open....');
+            ws.send('Hi,Message from Client...... ')
+        }
+        ws.onmessage = function(event){
+            console.log("Message Recieved From Server Application......",event);
+        }
+        ws.onerror = function(){
+            console.log("Websocket Error Occured",event);
+        }
+        ws.onclose   = function(){
+            console.log("Websocket Connection Closed",event);
+        } */
+        ws.addEventListener('open',()=>{
+            console.log('Websocket Connection open....');
+            ws.send('Hi,Message from Client...... ')
+        })
+        ws.addEventListener('message',(event)=>{
+            console.log('Websocket Connection open....');
+            ws.send('Message Recieved From Server Application...... ',event)
+        })
+        ws.addEventListener('error',(event)=>{
+            console.log("Websocket Error Occured...........",event);
+        })
+        ws.addEventListener('close',(event)=>{
+            console.log("Websocket Connection CLosed....",event);
+        })
+    </script>
+</body>
+</html>

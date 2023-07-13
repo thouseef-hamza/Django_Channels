@@ -5,7 +5,7 @@ from channels.routing import ProtocolTypeRouter,URLRouter
 import app.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_channels.settings')
-
+    
 application = ProtocolTypeRouter({
     'http' : get_asgi_application(),
     'websocket' : URLRouter(

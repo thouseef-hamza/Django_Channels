@@ -40,7 +40,7 @@ class MyAsyncConsumer(AsyncConsumer):
     # and is about to finish the websocket handshake.
     async def websocket_connect(self,event):
         print('Websocket Connected............................................',event)
-        await self.send({
+        self.send({
             'type':'websocket.accept'
         })
     
