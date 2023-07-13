@@ -1,6 +1,7 @@
 from channels.consumer import SyncConsumer
 from channels.exceptions import StopConsumer
 from time import sleep
+import json
 class MySyncConsumer(SyncConsumer):
     # This Handler is called when client initially opens a connection 
     # and is about to finish the websocket handshake.
@@ -18,7 +19,7 @@ class MySyncConsumer(SyncConsumer):
         for i in range(50):
             self.send({
                 'type' : 'websocket.send',
-                'text' : str(i) 
+                'text' : json.dumps({"count":i})
             })
             sleep(1)
             
@@ -40,7 +41,7 @@ class MyAsyncConsumer(AsyncConsumer):
     # and is about to finish the websocket handshake.
     async def websocket_connect(self,event):
         print('Websocket Connected............................................',event)
-        self.send({
+        await self.send({
             'type':'websocket.accept'
         })
     
@@ -51,7 +52,7 @@ class MyAsyncConsumer(AsyncConsumer):
         for i in range(50):
             await self.send({
                 'type' : 'websocket.send',
-                'text' : str(i) 
+                'text' : json.dumps({"count":i})
             })
             await asyncio.sleep(1)
     # This handler is called when either connection to  the client is lost,

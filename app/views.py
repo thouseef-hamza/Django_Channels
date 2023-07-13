@@ -152,3 +152,15 @@ send() - The WebSocket.send() method equeues the specifies data to be transmitte
          Eg:- ws.send("Hello")
 
 """
+# =========================== Python JSON Lib =========================
+"""
+~ import json
+~ json.dumps() - This method is used to convert Python dictionary into json string
+~ json.loads() - This method is used to convert json string into Python Dictionary \
+"""
+
+#  ========================== JSON =======================
+"""
+~ JSON.parse() - This method is used to convert json string to JavaScript object
+~ JSON.stringify() - This method is used to convert Javascript object into Json string  
+"""

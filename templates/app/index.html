@@ -7,22 +7,25 @@
 </head>
 <body>
     <h1>Count Page</h1>
+    <h1 id = "ct"></h1>
     <script>
-        var ws = new WebSocket('ws://127.0.0.1:8000/ws/sc/')
-        /* ws.onopen = function(){
+        var ws = new WebSocket('ws://127.0.0.1:8000/ws/ac/')
+        ws.onopen = function(){
             console.log('Websocket Connection open....');
-            ws.send('Hi,Message from Client...... ')
+            ws.send('Hi,Message from Client to Server...... ')
         }
         ws.onmessage = function(event){
-            console.log("Message Recieved From Server Application......",event);
+            console.log("Message Recieved From Server Application......",event.data);
+            var data = JSON.parse(event.data)
+            document.getElementById("ct").innerHTML = data.count
         }
         ws.onerror = function(){
             console.log("Websocket Error Occured",event);
         }
         ws.onclose   = function(){
             console.log("Websocket Connection Closed",event);
-        } */
-        ws.addEventListener('open',()=>{
+        } 
+        /* ws.addEventListener('open',()=>{
             console.log('Websocket Connection open....');
             ws.send('Hi,Message from Client...... ')
         })
@@ -35,7 +38,7 @@
         })
         ws.addEventListener('close',(event)=>{
             console.log("Websocket Connection CLosed....",event);
-        })
+        })*/
     </script>
 </body>
 </html>
